@@ -1,0 +1,37 @@
+{{>layout/header}}
+
+<h1>스프링 부트로 시작하는 웹 서비스</h1>
+<div class="col-md-12">
+   <div class="row">
+       <div class="col-md-6">
+           <a href="/posts/save" role="button" class="btn btn-primary">글등록</a>
+       </div>
+   </div>
+
+
+    <br>
+    <!--목록 출력 영역-->
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <td>게시글번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>최종수정일</td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#posts}} <!-- (1) -->
+        <tr>
+            <td>{{id}}</td> <!-- (2) -->
+            <td><a href="/posts/update/{{id}}"> {{title}}</a></td>
+            <td>{{author}}</td>
+            <td>{{modifiedDate}}</td>
+        </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+</div>
+
+
+{{>layout/footer}}
