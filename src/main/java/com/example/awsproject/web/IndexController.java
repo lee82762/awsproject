@@ -1,5 +1,6 @@
 package com.example.awsproject.web;
 
+import com.example.awsproject.config.auth.LoginUser;
 import com.example.awsproject.config.auth.dto.SessionUser;
 import com.example.awsproject.service.posts.PostsService;
 import com.example.awsproject.web.dto.PostsResponseDto;
@@ -37,15 +38,18 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
+
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");//
+        //SessionUser user = (SessionUser) httpSession.getAttribute("user");//
         // (1)
         if(user != null) { // (2)
-
+            System.out.println("userName" + user.getName());
             model.addAttribute("userName", user.getName());
-            System.out.println(model.getAttribute("userName"));
+            model.addAttribute("test1", user.getName());
+            model.addAttribute("test", user.getEmail());
+            //System.out.println(model.getAttribute("model get="+"userName"));
         }
         return "index";
     }

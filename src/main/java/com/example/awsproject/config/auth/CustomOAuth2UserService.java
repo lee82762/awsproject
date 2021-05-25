@@ -31,6 +31,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest
                 .getClientRegistration()
                 .getRegistrationId(); // (1)
+
         String userNameAttributeName = userRequest
                 .getClientRegistration()
                 .getProviderDetails()
@@ -48,7 +49,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         SessionUser user1 = (SessionUser) httpSession.getAttribute("user");//
 
-        System.out.println(user1.getName());
 
        // httpSession.setAttribute("user", new SessionUser(user));// (4)
 
